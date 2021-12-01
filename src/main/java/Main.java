@@ -3,7 +3,7 @@
 public class Main {
     public static void main(String[] args) throws Exception {
 
-        var parser = new CVS_Parser();
+        var parser = new CSV_Parser();
         var table = parser.getParsedCVSFromPath("src/main/resources/java-rtf (5).csv", ";");
         var vkParser = new VK_Parser();
         var vkData = vkParser.getJsonMembersOfGroup(198188261);

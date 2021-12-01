@@ -3,7 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class CVS_Parser {
+public class CSV_Parser {
 
     private String file;
 
