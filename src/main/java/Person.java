@@ -1,28 +1,27 @@
 public class Person {
-    private String firstName;
-    private String lastName;
-    private String fullName;
-    private String  birthday;
-    private int VK_ID;
-    private String homeTown;
+    private String name = "name";
+    private String lastName = "lastname";
+    private String birthday = "birthday";
+    private int VK_ID = 0;
+    private String homeTown = "homeTown";
+    private int personID;
 
 
     public Person(String firstName, String lastName) {
-        this.firstName = firstName;
+        this.name = firstName;
         this.lastName = lastName;
-        this.fullName = firstName + " " + lastName;
     }
 
-    public Person(String fullName) {
-        this.firstName = "Имя";
-        this.lastName = "Фамилия";
-        this.fullName = fullName;
+    public int getPersonID() {
+        return personID;
     }
 
+    public void setPersonID(int personID) {
+        this.personID = personID;
+    }
 
-
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
     public String getLastName() {
@@ -31,10 +30,6 @@ public class Person {
 
     public String getBirthday() {
         return birthday;
-    }
-
-    public String getFullName() {
-        return fullName;
     }
 
     public String getHomeTown() {

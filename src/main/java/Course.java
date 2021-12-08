@@ -3,10 +3,21 @@ import java.util.Map;
 
 public class Course {
     private String name;
+    private String studentGroup;
     private Map<String, Topic> Topics = new HashMap<>();
+
 
     public Course(String name) {
         this.name = name;
+    }
+
+
+    public String getStudentGroup() {
+        return studentGroup;
+    }
+
+    public void setStudentGroup(String studentGroup) {
+        this.studentGroup = studentGroup;
     }
 
     public void addTopic(Topic topic) {

@@ -15,17 +15,20 @@ public class Task extends TableElement {
 
     }
 
-    public void setMark(int mark) {
-        this.mark = mark;
-    }
-
-
     public String getName() {
         return name;
     }
 
+    public void setMark(int mark) {
+        this.mark = mark;
+    }
+
     public int getMark() {
         return mark;
+    }
+
+    public void setMAX_MARK(int MAX_MARK) {
+        this.MAX_MARK = MAX_MARK;
     }
 
     public int getMAX_MARK() {

@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class DataBaseManager {
+public class TetsBD {
 
     public static Connection conn;
     public static Statement statmt;

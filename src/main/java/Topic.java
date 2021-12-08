@@ -12,11 +12,9 @@ import java.util.Map;
                mark: 2
 
  */
-
-
 public class Topic extends TableElement {
     private String name;
-    private Map<String, Task> topicTasks = new HashMap<>();
+    private Map<String, Task> tasks = new HashMap<>();
 
     public Topic(String name, int columnPos, int rowPos) {
         super(columnPos, rowPos);
@@ -28,21 +26,21 @@ public class Topic extends TableElement {
     }
 
     public Map<String, Task> getAllTask() {
-        return topicTasks;
+        return tasks;
     }
 
 
     public void addTask(Task task) {
-        topicTasks.put(task.getName(), task);
+        tasks.put(task.getName(), task);
     }
 
     public void addTask(String taskName, int columnPos, int rowPos) {
-        topicTasks.put(taskName, new Task(taskName, columnPos, rowPos));
+        tasks.put(taskName, new Task(taskName, columnPos, rowPos));
     }
 
 
     public Task getTask(String taskName) {
-        return topicTasks.get(taskName);
+        return tasks.get(taskName);
     }
 
 }
