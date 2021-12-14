@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class StudentsCreator {
 
-    public static Students CreateStudents(ArrayList<String[]> table, JsonArray vkData) {
+    public static Students CreateStudents(ArrayList<String[]> table, JsonArray vkData) throws SQLException {
 
         var students = new Students();
         var lastPersonID = getLastPersonIDFromDB();
@@ -25,11 +25,22 @@ public class StudentsCreator {
 
             //Скидываем студента в общуюю кучу студентов
             students.students.add(student);
+
+            //Записываем студента в БД
+            DBManager.WriteStudentToDB(student);
         }
         return students;
     }
 
     private static int getLastPersonIDFromDB() {
+        if (!DBManager.isConnected()) {
+            try {
+                DBManager.Conn();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                return 0;
+            }
+        }
         try {
             return DBManager.getMaxPersonID();
         } catch (Exception e) {
@@ -39,7 +50,7 @@ public class StudentsCreator {
     }
 
     private static Student getStudentFromTable(ArrayList<String[]> table, int row) {
-        var nameAndLastName = table.get(row)[0].split(" ");
+        var nameAndLastName = table.get(row)[0].split(" +");
         var firstName = nameAndLastName[1];
         var lastName = nameAndLastName[0];
         return new Student(firstName, lastName);
@@ -78,7 +89,7 @@ public class StudentsCreator {
                     .get("last_name")
                     .getAsString();
 
-            if (student.getName().equals(firstName) && student.getLastName().equals(lastName)) {
+            if (student.getFirstname().equals(firstName) && student.getLastName().equals(lastName)) {
 
                 student.setVK_ID(vkData
                         .get(i)

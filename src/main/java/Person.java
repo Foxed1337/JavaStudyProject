@@ -1,5 +1,5 @@
 public class Person {
-    private String name = "name";
+    private String firstname = "name";
     private String lastName = "lastname";
     private String birthday = "birthday";
     private int VK_ID = 0;
@@ -8,7 +8,7 @@ public class Person {
 
 
     public Person(String firstName, String lastName) {
-        this.name = firstName;
+        this.firstname = firstName;
         this.lastName = lastName;
     }
 
@@ -20,8 +20,8 @@ public class Person {
         this.personID = personID;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstname() {
+        return firstname;
     }
 
     public String getLastName() {
