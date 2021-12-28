@@ -1,16 +1,25 @@
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Course {
     private String name;
     private String studentGroup;
-    private Map<String, Topic> Topics = new HashMap<>();
+    private int maxScore;
+    private Map<String, Topic> Topics = new LinkedHashMap<>();
 
 
     public Course(String name) {
         this.name = name;
     }
 
+    public void setMaxScore(int score) {
+        this.maxScore = score;
+    }
+
+    public int getMaxScore() {
+        return this.maxScore;
+    }
 
     public String getStudentGroup() {
         return studentGroup;
@@ -29,10 +38,10 @@ public class Course {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public Map<String, Topic> getAllTopics() {
-        return Topics;
+        return this.Topics;
     }
 }

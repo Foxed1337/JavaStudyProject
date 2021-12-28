@@ -1,5 +1,7 @@
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+
 /*
 Класс темы. Пример темы из курса Ulearn:
 
@@ -14,7 +16,7 @@ import java.util.Map;
  */
 public class Topic extends TableElement {
     private String name;
-    private Map<String, Task> tasks = new HashMap<>();
+    private Map<String, Task> tasks = new LinkedHashMap<>();
 
     public Topic(String name, int columnPos, int rowPos) {
         super(columnPos, rowPos);
@@ -29,13 +31,24 @@ public class Topic extends TableElement {
         return tasks;
     }
 
-
     public void addTask(Task task) {
         tasks.put(task.getName(), task);
     }
 
+    //Костыль
+    private int count = 1;
+
     public void addTask(String taskName, int columnPos, int rowPos) {
-        tasks.put(taskName, new Task(taskName, columnPos, rowPos));
+        //TODO : Сделать костыль элегантнее
+        var key = "ДЗ: Контрольный вопрос";
+        if (taskName.trim().equals(key)) {
+            taskName = String.format("%s %s", taskName, count);
+            tasks.put(taskName, new Task(taskName, columnPos, rowPos));
+            count++;
+        } else {
+            tasks.put(taskName, new Task(taskName, columnPos, rowPos));
+        }
+
     }
 
 

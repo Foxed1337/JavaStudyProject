@@ -1,15 +1,24 @@
 public class Person {
-    private String firstname = "name";
-    private String lastName = "lastname";
-    private String birthday = "birthday";
+    private String firstname = "none";
+    private String lastName = "none";
+    private String birthday = "none";
     private int VK_ID = 0;
-    private String homeTown = "homeTown";
+    private String homeTown = "none";
+    private String gender = "none";
     private int personID;
 
 
     public Person(String firstName, String lastName) {
         this.firstname = firstName;
         this.lastName = lastName;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getGender() {
+        return this.gender;
     }
 
     public int getPersonID() {

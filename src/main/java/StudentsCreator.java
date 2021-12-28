@@ -21,7 +21,7 @@ public class StudentsCreator {
             addInformationFromVK(student, vkData);
 
             //Добавляем студенту курс(в данном случае ULearnJava)
-            student.addCourse(getPersonalizeCourse(table, i));
+            student.addCourse(getPersonalizeJavaCourse(table, i));
 
             //Скидываем студента в общуюю кучу студентов
             students.students.add(student);
@@ -56,13 +56,14 @@ public class StudentsCreator {
         return new Student(firstName, lastName);
     }
 
-    private static Course getPersonalizeCourse(ArrayList<String[]> table, int row) {
+    private static Course getPersonalizeJavaCourse(ArrayList<String[]> table, int row) {
 
         //получаем шапку курса т.е. список тем и заданий, которые включает в себя данная тема
         var personalizedCourse = UlearnJavaCourseCreator.CreateCurse(table);
         //Указываем группу, в которой обучаетмся студент на данном курсе
-        var group = table.get(row)[1];
-        personalizedCourse.setStudentGroup(group);
+        personalizedCourse.setStudentGroup(table.get(row)[1]);
+        //Указываем максимальное количество баллов, которое можно набрать за курс
+        personalizedCourse.setMaxScore(Integer.parseInt(table.get(2)[2]));
         //Заполняем курс студента. Вносим оценки за каждое задание в каждой теме
         for (var topic : personalizedCourse.getAllTopics().values()) {
             for (var task : topic.getAllTask().values()) {
@@ -119,6 +120,15 @@ public class StudentsCreator {
                     if (jsonCityTitle != null) {
                         student.setHomeTown(jsonCityTitle.getAsString());
                     }
+                }
+
+                var jsonGender = vkData
+                        .get(i)
+                        .getAsJsonObject()
+                        .get("sex");
+
+                if (jsonBirthday != null) {
+                    student.setGender(jsonGender.getAsString());
                 }
                 break;
             }

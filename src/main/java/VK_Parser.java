@@ -42,7 +42,7 @@ public class VK_Parser {
                                     "\"v\": \"5.131\", " +
                                     "\"sort\": \"id_asc\", " +
                                     "\"count\": \"1000\"," +
-                                    "\"fields\" : \"bdate,city,country\"," +
+                                    "\"fields\" : \"bdate,city,country,sex\"," +
                                     "\"offset\" :" + offset +
                                     "})" +
                                     ".items;")

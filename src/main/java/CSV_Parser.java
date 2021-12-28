@@ -5,19 +5,18 @@ import java.util.ArrayList;
 
 public class CSV_Parser {
 
-    private String file;
 
-    public ArrayList<String[]> getParsedCVSFromPath(String filePath, String separator) {
+
+    public static ArrayList<String[]> getParsedCVSFromPath(String filePath, String separator) {
         /*
         Парсит CSV в лист строк таблицы
          */
-        file = filePath;
         String line = "";
         BufferedReader reader = null;
         ArrayList<String[]> results = new ArrayList<>();
 
         try {
-            reader = new BufferedReader(new FileReader(file));
+            reader = new BufferedReader(new FileReader(filePath));
             while ((line = reader.readLine()) != null) {
                 results.add(line.split(separator));
             }
