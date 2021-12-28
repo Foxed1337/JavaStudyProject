@@ -86,7 +86,7 @@ public class Main {
         var table = CSV_Parser.getParsedCVSFromPath(path, ";");
         var vkParser = new VK_Parser();
         var vkData = vkParser.getJsonMembersOfGroup(Config.IRIT_GROUP_ID);
-        var sts = StudentsCreator.CreateStudents(table, vkData);
+        StudentsCreator.CreateStudents(table, vkData);
         System.out.println();
     }
 

@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public class StudentsCreator {
 
-    public static Students CreateStudents(ArrayList<String[]> table, JsonArray vkData) throws SQLException {
+    public static void CreateStudents(ArrayList<String[]> table, JsonArray vkData) throws SQLException {
 
-        var students = new Students();
+
         var lastPersonID = getLastPersonIDFromDB();
 
         for (int i = 3; i < table.size(); i++) {
@@ -24,12 +24,12 @@ public class StudentsCreator {
             student.addCourse(getPersonalizeJavaCourse(table, i));
 
             //Скидываем студента в общуюю кучу студентов
-            students.students.add(student);
+
 
             //Записываем студента в БД
             DBManager.WriteStudentToDB(student);
         }
-        return students;
+
     }
 
     private static int getLastPersonIDFromDB() {
